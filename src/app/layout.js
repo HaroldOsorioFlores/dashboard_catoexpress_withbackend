@@ -1,4 +1,4 @@
-import Nav from "@/components/nav/Nav";
+import Nav from "@/components/Nav";
 import { Provider } from "./Provider";
 import "./globals.css";
 
@@ -12,8 +12,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Provider>
-          <Nav />
-          {children}
+          <div className="flex ">
+            <header className="bg-gray-700 p-4 text-white header">
+              <Nav />
+            </header>
+            <main className="p-4">{children}</main>
+          </div>
         </Provider>
       </body>
     </html>

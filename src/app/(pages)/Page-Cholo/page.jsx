@@ -1,4 +1,4 @@
-const ElCholo = () => {
+const PageElCholo = () => {
   return <>El Cholo</>;
 };
-export default ElCholo;
+export default PageElCholo;

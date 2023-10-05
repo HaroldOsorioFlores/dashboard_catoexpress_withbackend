@@ -1,4 +1,4 @@
-const ComoEnCasa = () => {
+const PageComoEnCasa = () => {
   return <>Como en casa</>;
 };
-export default ComoEnCasa;
+export default PageComoEnCasa;
