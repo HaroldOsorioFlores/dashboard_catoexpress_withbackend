@@ -10,9 +10,6 @@ const PageLogin = () => {
   useEffect(() => {
     if (status === "authenticated") {
       router.push("/");
-    } else {
-      const navbar = document.querySelector(".header");
-      navbar.hidden = true;
     }
   }, [router, status]);
 

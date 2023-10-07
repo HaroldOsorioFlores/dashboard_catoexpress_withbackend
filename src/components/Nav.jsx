@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const data = [
@@ -14,7 +14,8 @@ const data = [
 ];
 const Nav = () => {
   const { data: session, status } = useSession();
-  console.log("Nav solo console", session);
+  const pathname = usePathname();
+  console.log("Nav solo console", session, pathname);
 
   const router = useRouter();
 
@@ -25,10 +26,19 @@ const Nav = () => {
   }, [router, status]);
 
   return (
-    <aside className=" flex flex-col h-screen justify-between ">
+    <aside
+      className={`flex flex-col h-screen w-64 justify-between bg-gray-700 p-4 text-white header ${
+        pathname === "/Page-Login" ? "hidden" : ""
+      }`}
+    >
       <nav className="flex flex-col gap-6">
+        <Link href="/">{session.user.email}</Link>
         {data.map((item, index) => (
-          <Link key={index} href={item.url} className="flex gap-2">
+          <Link
+            key={index}
+            href={item.url}
+            className="flex gap-2 hover:text-orange-400 focus:text-orange-400"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

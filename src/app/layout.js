@@ -13,9 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <Provider>
           <div className="flex ">
-            <header className="bg-gray-700 p-4 text-white header">
-              <Nav />
-            </header>
+            <Nav />
             <main className="p-4">{children}</main>
           </div>
         </Provider>
