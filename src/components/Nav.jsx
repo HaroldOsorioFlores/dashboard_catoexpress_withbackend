@@ -32,7 +32,7 @@ const Nav = () => {
       }`}
     >
       <nav className="flex flex-col gap-6">
-        <Link href="/">{session.user.email}</Link>
+        <Link href="/">{session?.user.email}</Link>
         {data.map((item, index) => (
           <Link
             key={index}
