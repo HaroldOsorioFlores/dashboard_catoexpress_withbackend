@@ -15,8 +15,6 @@ const data = [
 const Nav = () => {
   const { data: session, status } = useSession();
   const pathname = usePathname();
-  console.log("Nav solo console", session, pathname);
-
   const router = useRouter();
 
   useEffect(() => {
