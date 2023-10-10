@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 const PageProductsAdd = () => {
   const pathname = usePathname();
   return (
-    <section className=" flex-col  ">
-      <div className=" flex justify-between">
-        <h1>Anadir producto</h1>
+    <section className="  flex flex-col gap-7 ">
+      <div className="  flex flex-col gap-5">
         <BtnPush nameBtn="Volver" linkBtn={pathname} />
+        <h1>Anadir producto</h1>
       </div>
       <FormProducts />
     </section>

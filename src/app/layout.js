@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <Provider>
           <div className="flex ">
             <Nav />
-            <main className="p-4 main">{children}</main>
+            <main className="p-4 main pt-10">{children}</main>
           </div>
         </Provider>
       </body>

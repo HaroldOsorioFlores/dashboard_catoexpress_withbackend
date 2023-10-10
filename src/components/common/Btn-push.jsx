@@ -13,7 +13,7 @@ const BtnPush = ({ linkBtn, nameBtn, btnType }) => {
           ? router.back()
           : router.push(linkBtn)
       }
-      className="bg-blue-700 text-white p-2 px-4 rounded-xl  h-10"
+      className="bg-blue-700 text-white p-2 px-4 rounded-xl  h-10 max-w-max"
       type={btnType}
     >
       {nameBtn}
