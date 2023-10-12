@@ -1,13 +1,22 @@
 import BtnPush from "./common/Btn-push";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 const FormProducts = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const data = { title, description, price };
+      await axios.post("/api/product", data);
+      return console.log("Formulario exitoso");
+    } catch (error) {
+      return console.error(error);
+    }
   };
   console.log(title, description, price);
   return (

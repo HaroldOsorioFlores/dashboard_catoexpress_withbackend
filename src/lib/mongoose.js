@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default mongoDbConnect = async () => {
+const mongoDbConnect = async () => {
   const { MONGODB_URI } = process.env;
 
   if (!MONGODB_URI) {
@@ -18,3 +18,5 @@ export default mongoDbConnect = async () => {
     return Promise.reject(error);
   }
 };
+
+export default mongoDbConnect;
