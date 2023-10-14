@@ -6,8 +6,12 @@ const FormProducts = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  const router = useRouter();
+  const [file, setFile] = useState(null);
 
+  const uploadImageData = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -15,10 +19,9 @@ const FormProducts = () => {
       await axios.post("/api/product", data);
       return console.log("Formulario exitoso");
     } catch (error) {
-      return console.error(error);
+      return console.error("Error al enviar datos al servidor:", error);
     }
   };
-  console.log(title, description, price);
   return (
     <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
       <div className="flex flex-col">
