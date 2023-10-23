@@ -6,10 +6,13 @@ const PageElCholo = () => {
     <section className=" flex flex-col gap-7 ">
       <section className="flex  justify-between">
         <h1>El Cholo</h1>
-        <BtnPush linkBtn="/Page-Products/Add" nameBtn="Nuevo producto" />
+        <BtnPush
+          linkBtn="/Page-Products/Add?page=cholo"
+          nameBtn="Nuevo producto"
+        />
       </section>
       <section>
-        <TableProducts />
+        <TableProducts apiUrl="cholo" />
       </section>
     </section>
   );

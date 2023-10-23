@@ -1,22 +1,39 @@
+"use client";
 import BtnPush from "./common/Btn-push";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 const FormProducts = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
   const [file, setFile] = useState(null);
 
-  const uploadImageData = () => {
-    const formData = new FormData();
-    formData.append("file", file);
+  const searchParams = useSearchParams();
+  const search = searchParams.get("page");
+
+  const uploadImageData = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "catoexpress");
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dqrtitrrs/image/upload`,
+        formData
+      );
+      return response.data.secure_url;
+    } catch (error) {
+      return console.error("Error al enviar datos a cloudinary:", error);
+    }
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const data = { title, description, price };
-      await axios.post("/api/product", data);
+      const urlImage = await uploadImageData();
+      console.log("URL de la imagen actualizada:", urlImage);
+      const data = { title, description, urlImage, price };
+      console.log(data);
+      await axios.post(`/api/products/${search}`, data);
       return console.log("Formulario exitoso");
     } catch (error) {
       return console.error("Error al enviar datos al servidor:", error);
@@ -41,6 +58,13 @@ const FormProducts = () => {
           placeholder="Hambugersa con triple queso"
           className="p-2 max-w-md border-black border rounded-md"
           onChange={(event) => setDescription(event.target.value)}
+        />
+      </div>
+      <div className="flex flex-col">
+        <label>Ingresar imagen</label>
+        <input
+          type="file"
+          onChange={(event) => setFile(event.target.files[0])}
         />
       </div>
       <div className="flex flex-col">

@@ -1,17 +1,18 @@
 "use client";
 import FormProducts from "@/components/FormProducts";
 import BtnPush from "@/components/common/Btn-push";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const PageProductsAdd = () => {
   const pathname = usePathname();
+  console.log("Pagina de regreso: ", pathname)
   return (
     <section className="  flex flex-col gap-7 ">
       <div className="  flex flex-col gap-5">
-        <BtnPush nameBtn="Volver" linkBtn={pathname} />
+        <BtnPush nameBtn="Volver" />
         <h1>Anadir producto</h1>
       </div>
-      <FormProducts />
+      <FormProducts apiProducShop="cholo" uploadPreset="elcholo"/>
     </section>
   );
 };
